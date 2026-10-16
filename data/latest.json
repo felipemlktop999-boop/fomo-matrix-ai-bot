@@ -1,0 +1,226 @@
+{
+  "source": "DexScreener token boosts (promoted, nonrepresentative)",
+  "collected_at": "2026-10-16T15:44:35.429139+00:00",
+  "tokens": [
+    {
+      "id": "5e8GPzhqxLKFVU6gb87aJLZMoSQnbjBhQupXvCCZpump",
+      "chain": "SOL",
+      "name": "Super Roadster",
+      "symbol": "SR",
+      "price": 0.0007353,
+      "liq": 73345.97,
+      "vol": 428456.32,
+      "url": "https://dexscreener.com/solana/holedrmwbeayvy51ivsw9nepo5hpeof4hgccxwauibgw",
+      "pairAddress": "HoLeDRmwBeaYVy51iVsw9nepo5hpeof4HgccxWAUiBGW"
+    },
+    {
+      "id": "HMYd9tosnUXuNHmq7pXmoePRVBLBBjA3JBfydq6upump",
+      "chain": "SOL",
+      "name": "Super Intelligence SI276",
+      "symbol": "SI276",
+      "price": 0.0009055,
+      "liq": 94835.8,
+      "vol": 563126.66,
+      "url": "https://dexscreener.com/solana/12jc1dzjpzbcdakum4brakh9jcfry2tlg1ffgsl4ftcg",
+      "pairAddress": "12jc1DzJpzbCDaKuM4brAKh9jcFry2TLG1FfGsL4ftCG"
+    },
+    {
+      "id": "CpdbvrkDQNNbZdcLCMpto1U84ep8FrFdfT84Lme6pump",
+      "chain": "SOL",
+      "name": "illusion",
+      "symbol": "illusion",
+      "price": 7.237e-05,
+      "liq": 21340.79,
+      "vol": 47345.64,
+      "url": "https://dexscreener.com/solana/99ubokrvykgkurmuuzr6zjwiy1cgoqakuxdhfgxhjenz",
+      "pairAddress": "99UboKRVYKgkUrMUUZr6ZJWiY1CGoQAKuxDHFGxHjeNZ"
+    },
+    {
+      "id": "9r66E1DAp8WtG2ZQChEab2o23Larjb8HsJ2zfvz9pump",
+      "chain": "SOL",
+      "name": "Rachid Zarmani",
+      "symbol": "RZ",
+      "price": 4.345e-06,
+      "liq": 0.0,
+      "vol": 2017.22,
+      "url": "https://dexscreener.com/solana/zpm4dchpmfjqatxpjguy8v99wymywugcwyrgju1ngc4",
+      "pairAddress": "ZPM4DChPMfjqAtxPJGUY8V99wymyWuGCwYrgjU1nGc4"
+    },
+    {
+      "id": "9ymTnjQfTVLzMRa2G5V1xxv7LnS8nnDdACr2hW8KGHPM",
+      "chain": "SOL",
+      "name": "Yilong Ma",
+      "symbol": "YILONG",
+      "price": 1.626e-05,
+      "liq": 0.0,
+      "vol": 14538.23,
+      "url": "https://dexscreener.com/solana/d62ceh8ers2whf7x4srulppdn47vt4716wqphvpks6sn",
+      "pairAddress": "D62Ceh8Ers2wHf7x4SRULppdn47VT4716wqPHVPKs6Sn"
+    },
+    {
+      "id": "BpFU7v4YLxkbwiweqesZYgrNP3favTfgXEPGDzV3pump",
+      "chain": "SOL",
+      "name": "THRUSTPUP",
+      "symbol": "THRUST",
+      "price": 3.117e-06,
+      "liq": 0.0,
+      "vol": 583.71,
+      "url": "https://dexscreener.com/solana/gs8xgehyu8cl2ptvaurngqmnracrwwjchuntesqs2weh",
+      "pairAddress": "Gs8XGeHYu8cL2PtvaUrNgqmNrACRwWjchuNtEsQS2weH"
+    },
+    {
+      "id": "3xmzHi86JTUdye7bUuT9TdBPZLeBK9nBCA44JHRdpump",
+      "chain": "SOL",
+      "name": "AUDACITY ROADSTER",
+      "symbol": "Audaster",
+      "price": 2.976e-06,
+      "liq": 3252.29,
+      "vol": 3524870.99,
+      "url": "https://dexscreener.com/solana/3qng1rkg3xh4d4snkmdc5vf6ccp8sbbefy3nwpt8gr4f",
+      "pairAddress": "3QNg1RKG3xH4d4snKmdC5vF6CCP8SBBEfy3NWpT8GR4f"
+    },
+    {
+      "id": "ArYLaFKo78Q6rkJbiZNgCRovS3eL1WSmYzvWYgz4pump",
+      "chain": "SOL",
+      "name": "Donald Trump Reward Token",
+      "symbol": "DTRT",
+      "price": 3.177e-06,
+      "liq": 0.0,
+      "vol": 6533.96,
+      "url": "https://dexscreener.com/solana/ath6fafkgpkq8pdv1olnbtqiudgtb296uxdv7vd5bwvu",
+      "pairAddress": "AtH6fAFkgpKQ8pdv1oLnbTqiudGTb296Uxdv7vD5bwVU"
+    },
+    {
+      "id": "8xDiE7TYxmmS3ZTeR8y7L6xSrG5WTGTnrDUvSkQ2pump",
+      "chain": "SOL",
+      "name": "Jean Cul",
+      "symbol": "Cul",
+      "price": 3.46e-06,
+      "liq": 2161.78,
+      "vol": 5063.14,
+      "url": "https://dexscreener.com/solana/esbt4cweu9uzfenmzk8l3khitifnmlccyruvzyccozfs",
+      "pairAddress": "ESbt4CwEU9UZfENmZk8L3KHiTiFnMLcCYRUVzyccoZfS"
+    },
+    {
+      "id": "0x7D0443CdDFc8E11AF105F4fE44Dd28c630237777",
+      "chain": "BSC",
+      "name": "DAWG",
+      "symbol": "DAWG",
+      "price": 0.00497,
+      "liq": 230728.53,
+      "vol": 3087487.04,
+      "url": "https://dexscreener.com/bsc/0x9e83be1267e9a6d43bb7f3a8c0dc3c092ccae63e",
+      "pairAddress": "0x9E83Be1267E9A6D43bb7f3a8c0Dc3c092cCAe63E"
+    },
+    {
+      "id": "49VZNZqvkcsGajJ8k9xrEzDZTLRDV5rZn9YYthg53czn",
+      "chain": "SOL",
+      "name": "EGGU",
+      "symbol": "EGGU",
+      "price": 0.0001964,
+      "liq": 37900.03,
+      "vol": 11395.27,
+      "url": "https://dexscreener.com/solana/h8s3xm93y6ufmjhjue7xqhh6saq8szqvjgwwnydrpecq",
+      "pairAddress": "H8S3Xm93y6ufMjHJue7XQHh6sAQ8SzQvJGwwNYdRpeCq"
+    },
+    {
+      "id": "PdtREY9H6Fp9jVMpG36aywtCgxTtsQZetmehKqgyern",
+      "chain": "SOL",
+      "name": "yern.fun",
+      "symbol": "YERN",
+      "price": 1.275e-05,
+      "liq": 0.0,
+      "vol": 71241.99,
+      "url": "https://dexscreener.com/solana/8anmnd6jtpcvxsgenwh4wgtwyluuyrwtatevxkydac5d",
+      "pairAddress": "8ANMnD6jtpCvXsGenwh4wgtwYLuuYrwTaTevXkYdac5d"
+    },
+    {
+      "id": "4ti7DQpMPKHcC72t8WBCQj2M8q9CkNu7Fbhwp1u1pump",
+      "chain": "SOL",
+      "name": "Doge Tesla Roadster",
+      "symbol": "DTR",
+      "price": 2.094e-06,
+      "liq": 2193.23,
+      "vol": 471914.85,
+      "url": "https://dexscreener.com/solana/5cij3qxfjsv1rrxee9g1ppgavm28sgf5kpgevuzge9mc",
+      "pairAddress": "5CiJ3qXfjSv1rrXee9g1PpGavM28sgF5KpgEvUZgE9Mc"
+    },
+    {
+      "id": "8DXqVUopcdviLvujTcpwEqkKzB43Arp6E1axzsEE5Btq",
+      "chain": "SOL",
+      "name": "meme + coin =",
+      "symbol": "moin",
+      "price": 0.0002199,
+      "liq": 49895.92,
+      "vol": 13060.57,
+      "url": "https://dexscreener.com/solana/cbr2ul7ktbr8muutj3fycurzerp28ga2p1vpumeky1je",
+      "pairAddress": "CbR2UL7ktBr8MUUTj3FYcURZerp28GA2p1vPuMeKy1Je"
+    },
+    {
+      "id": "3YNCESdqhSgvsD4aARHC4rdqXpjyW9CWjosH82hNpump",
+      "chain": "SOL",
+      "name": "Dinky",
+      "symbol": "DINKY",
+      "price": 0.0001892,
+      "liq": 38042.09,
+      "vol": 11945.74,
+      "url": "https://dexscreener.com/solana/cff8nw52ru26pf5uciswzymjtltvqwnledbdvqjytfm7",
+      "pairAddress": "CFF8nW52Ru26pF5UciswzymjtLtVqwnLeDbDVqjYtFM7"
+    },
+    {
+      "id": "EyWrMXBb5DXppWs5uNa6repSEDoDSachbjeixU9KREVS",
+      "chain": "SOL",
+      "name": "RevShare",
+      "symbol": "REVS",
+      "price": 0.0006246,
+      "liq": 89263.91,
+      "vol": 16048.96,
+      "url": "https://dexscreener.com/solana/3iodstfu18uxoggmmjud6tztkvw72uqapddbjes42ppk",
+      "pairAddress": "3ioDsTFU18uxoGgMMjud6TztkVw72uQapDdBJES42PPK"
+    },
+    {
+      "id": "5rB2Z8xPrUGX75mL8Q7BZLjdKFtzaJYHhtPKMazSpump",
+      "chain": "SOL",
+      "name": "LandGrab",
+      "symbol": "GRAB",
+      "price": 8.337e-06,
+      "liq": 0.38,
+      "vol": 0.04,
+      "url": "https://dexscreener.com/solana/2nrpm714yrjhmteszb9j8wqhtpztgidfcu7nksexszxt",
+      "pairAddress": "2NRPm714YRjHmTESZb9J8WqhTpztgiDFCu7NksEXSZxT"
+    },
+    {
+      "id": "1EwcGE6WrssiY2sKSadB5E5DE9WhPDQvBC6kev1EDGE",
+      "chain": "SOL",
+      "name": "1EDGE",
+      "symbol": "1EDGE",
+      "price": 0.000296,
+      "liq": 42366.54,
+      "vol": 126270.09,
+      "url": "https://dexscreener.com/solana/8sacr5tmpmufk8kcggbxhz517yqg1m2xj2jca7bzpcut",
+      "pairAddress": "8sAcR5tMPmuFK8KcGGBxHZ517Yqg1M2xj2JCA7BzpCuT"
+    },
+    {
+      "id": "wLZrRQk9XBynAJSRdeQgsQrVURXGdfo4ahb1oRBpump",
+      "chain": "SOL",
+      "name": "Catch",
+      "symbol": "CATCH",
+      "price": 8.161e-05,
+      "liq": 23879.09,
+      "vol": 807398.12,
+      "url": "https://dexscreener.com/solana/5uvstfpqpsf9udazaikw87i4tawnihk81m5esx8zkguj",
+      "pairAddress": "5UvstFPqPsf9udazaiKW87i4TAWNihk81m5ESX8ZkgUJ"
+    },
+    {
+      "id": "GnZzaABHtnysrEbRRz2qGfMGrU6n8WdZ4W3GjxGqeqSm",
+      "chain": "SOL",
+      "name": "Pumpkin Cat",
+      "symbol": "PUMPKINCAT",
+      "price": 2.551e-05,
+      "liq": 0.0,
+      "vol": 39299.61,
+      "url": "https://dexscreener.com/solana/68zy1u7ufap2nkcdscxnrgd78smmwruvuvvqev4b7rxf",
+      "pairAddress": "68zY1U7UFaP2NKcDsCxnrGd78sMmWRUvuvvqev4B7rXF"
+    }
+  ]
+}
