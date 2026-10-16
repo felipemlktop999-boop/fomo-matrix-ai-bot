@@ -1,0 +1,49 @@
+
+name: FOMO MATRIX - Coleta automatica
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fomo-matrix-collector
+  cancel-in-progress: false
+
+jobs:
+  coletar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Baixar repositorio
+        uses: actions/checkout@v4
+
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Executar coletor
+        run: python collector.py
+
+      - name: Salvar dados atualizados
+        run: |
+          if [ ! -f data/latest.json ]; then
+            echo "Coletor nao gerou data/latest.json"
+            exit 1
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/latest.json
+          if [ -f data/history.jsonl ]; then
+            git add data/history.jsonl
+          fi
+          if ! git diff --cached --quiet; then
+            git commit -m "Atualizar radar FOMO MATRIX"
+            git push
+          fi
