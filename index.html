@@ -1,9 +1,19 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FOMO MATRIX AI BOT — Protótipo</title><style>
 :root{color-scheme:dark;--bg:#070b12;--panel:#101925;--edge:#23364a;--cyan:#00d9ef;--text:#e8f4ff;--muted:#8196ab;--green:#45e4a6;--red:#ff6486}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 65% -10%,#14334b 0%,transparent 45%),var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}header{border-bottom:1px solid var(--edge);padding:20px 4%;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}.brand{font-size:23px;font-weight:900;letter-spacing:2px}.brand span{color:var(--cyan)}.tag{border:1px solid #9b803f;background:#332b16;color:#ffdc8a;border-radius:20px;padding:7px 12px;font-size:12px}main{max-width:1400px;margin:auto;padding:26px 4%}.intro{color:var(--muted);line-height:1.6}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}.panel{background:linear-gradient(145deg,#111d2b,#0d1420);border:1px solid var(--edge);border-radius:16px;padding:20px;box-shadow:0 12px 30px #0002}.stat small{color:var(--muted)}.stat strong{display:block;font-size:27px;margin-top:10px}.layout{display:grid;grid-template-columns:1.55fr 1fr;gap:16px}.title{font-size:15px;letter-spacing:1px;text-transform:uppercase;margin:0 0 17px}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:15px}button,select,input{font:inherit;border-radius:9px;border:1px solid #31516b;background:#132638;color:var(--text);padding:10px 12px}button{cursor:pointer}button:hover{border-color:var(--cyan)}button.primary{background:#067a8c;border-color:#00d9ef;color:white;font-weight:700}button:disabled{opacity:.4;cursor:not-allowed}input{min-width:0;width:100%}table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;color:var(--muted);font-weight:500;padding:12px 8px;border-bottom:1px solid var(--edge)}td{padding:13px 8px;border-bottom:1px solid #1b2b3a}tr.clickable{cursor:pointer}tr.clickable:hover,tr.selected{background:#173043} .score{color:var(--green);font-weight:800}.red{color:var(--red)}.green{color:var(--green)}.muted{color:var(--muted)}.pill{border-radius:6px;background:#1a3544;padding:4px 7px;font-size:11px}.risk{color:#ffca70}canvas{width:100%;height:215px;border:1px solid var(--edge);border-radius:12px;background:#081521}.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.actions button{flex:1}.history{max-height:220px;overflow:auto;font-size:13px}.history div{padding:9px 0;border-bottom:1px solid var(--edge)}.notice{font-size:12px;color:#b9a878;border-left:3px solid #d9a943;padding-left:10px;line-height:1.5}.settings{display:grid;grid-template-columns:1fr 1fr;gap:10px}.settings label{font-size:12px;color:var(--muted)}.settings input{margin-top:7px}.footer{color:var(--muted);font-size:12px;margin:22px 0}@media(max-width:850px){.layout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.stats{grid-template-columns:1fr 1fr}.stat strong{font-size:21px}table{font-size:11px}td,th{padding:10px 4px}.brand{font-size:18px}}
-.v8grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}.mini{font-size:12px;color:var(--muted)}.signal{font-weight:800;letter-spacing:1px}.signal.wait{color:#f8c974}.signal.avoid{color:#ff6486}.signal.watch{color:#45e4a6}.bar{height:9px;background:#22364b;border-radius:9px;overflow:hidden}.bar>span{display:block;height:100%;background:#00d9ef}.mono{font-family:Consolas,monospace;overflow-wrap:anywhere}@media(max-width:850px){.v8grid{grid-template-columns:1fr}}</style></head><body><header><div class="brand">◈ FOMO <span>MATRIX</span> <small style="font-size:12px;color:var(--muted)">AI BOT V9</small></div><div class="tag">● MODO SIMULAÇÃO • RADAR REAL OPCIONAL</div></header><main><h1>Radar de oportunidades</h1><p class="intro">Radar com consulta opcional a dados públicos do DexScreener e triagem de risco V3. As compras e vendas continuam <b>exclusivamente simuladas</b>. Não há conexão com a FOMO Family nem com carteira.</p><div class="stats"><div class="panel stat"><small>Saldo virtual</small><strong id="balance">—</strong></div><div class="panel stat"><small>Resultado realizado</small><strong id="pnl">—</strong></div><div class="panel stat"><small>Posições abertas</small><strong id="positions">—</strong></div><div class="panel stat"><small>Tokens no radar</small><strong id="tokencount">8</strong></div></div><div class="panel" style="margin-bottom:16px"><div class="row" style="flex-wrap:wrap"><div><b>Fonte do radar</b><p class="muted" style="margin:5px 0">Escolha demonstração ou tokens reais em destaque no DexScreener.</p></div><div class="actions" style="margin:0"><button id="demo">Usar demonstração</button><button class="primary" id="live">Buscar tokens reais</button></div></div><p id="sourceStatus" class="muted" role="status">Modo demonstração: todos os dados são fictícios.</p></div><div class="layout"><section class="panel"><h2 class="title">◉ Radar de tokens</h2><div class="toolbar"><select id="chain"><option value="all">Todas as redes</option><option value="SOL">Solana</option><option value="BSC">BNB Chain</option></select><select id="risk"><option value="all">Todos os riscos</option><option value="low">Risco estimado menor</option><option value="high">Risco estimado maior</option></select><select id="order"><option value="score">Maior pontuação</option><option value="volume">Maior volume</option><option value="liquidity">Maior liquidez</option></select></div><div style="overflow:auto"><table><thead><tr><th>Token</th><th>Rede</th><th>Volume 24h</th><th>Liquidez</th><th>Risco</th><th>Score*</th></tr></thead><tbody id="tokens"></tbody></table></div><p class="footer">*Score heurístico de liquidez, volume e variação; não é IA preditiva. O indicador de risco é parcial e NÃO verifica honeypot, contrato, carteiras ou auditoria. Tokens em destaque não são necessariamente novos ou seguros.</p></section><section class="panel"><h2 class="title">▤ Detalhes do token</h2><div class="row"><strong id="coinname">—</strong><span class="pill" id="coinchain">—</span></div><p class="muted" id="coininfo"></p><canvas id="chart" width="700" height="270" aria-label="Gráfico ilustrativo"></canvas><div class="row" style="margin-top:12px"><span>Preço observado</span><strong id="price">—</strong></div><div style="margin-top:10px"><a id="external" target="_blank" rel="noopener noreferrer" style="color:#00d9ef;display:none">Ver par no DexScreener ↗</a></div><div class="row" style="margin-top:10px"><span>Classificação</span><strong id="verdict">—</strong></div><p class="notice">No modo real, o gráfico ilustrativo é desativado. Confirme dados, riscos e contratos em fontes independentes antes de qualquer decisão.</p></section><section class="panel"><h2 class="title">▣ Triagem de segurança V9</h2><p class="muted">Verificações limitadas aos dados de mercado disponíveis. Não é auditoria de contrato.</p><div id="checks" class="history" aria-live="polite"></div><p class="notice">Contrato, honeypot, concentração de holders, mint/freeze authority e bloqueio de liquidez: NÃO VERIFICADOS. Nunca trate um score alto como prova de segurança.</p><div class="actions"><button id="export">Exportar relatório CSV</button></div></section><section class="panel"><h2 class="title">◈ Simulador de operações</h2><div class="settings"><label>Valor por operação (US$ virtual)<input id="amount" type="number" min="1" max="1000" value="50"></label><label>Limite de exposição por operação (%)<input id="limit" type="number" min="1" max="100" value="10"></label></div><div class="actions"><button class="primary" id="buy">Simular compra</button><button id="sell">Simular venda</button><button id="reset">Reiniciar simulação</button></div><p id="feedback" class="muted" role="status"></p><p class="footer">Sem dinheiro real. Taxa simulada de 1% em cada ordem. O preço é um instantâneo da última consulta; não se atualiza automaticamente.</p></section><section class="panel"><h2 class="title">▤ Histórico local</h2><div id="history" class="history"></div><p class="footer">As operações fictícias são guardadas apenas neste navegador (armazenamento local).</p></section></div><section class="panel" style="margin-top:16px"><h2 class="title">◈ V9 • Observatório de preços reais</h2><p class="mini">Salva instantâneos dos tokens do radar real neste navegador. Comparações só aparecem após duas coletas do mesmo contrato. Não é histórico completo de mercado nem monitoramento em segundo plano.</p><div class="actions"><button id="snapshot" disabled>Salvar instantâneo real</button><button id="compare">Comparar coletas</button><button id="exportSnapshots">Exportar histórico CSV</button><button id="clearSnapshots">Limpar histórico</button></div><p id="snapshotStatus" class="muted" role="status">Aguardando primeira consulta real.</p><div style="overflow:auto"><table><thead><tr><th>Token</th><th>Rede</th><th>Preço anterior</th><th>Preço atual</th><th>Variação observada</th><th>Intervalo</th></tr></thead><tbody id="snapshotRows"><tr><td colspan="6" class="muted">Nenhuma comparação disponível.</td></tr></tbody></table></div></section><section class="v8grid" aria-label="Módulos V4 a V8">
+.v8grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}.mini{font-size:12px;color:var(--muted)}.signal{font-weight:800;letter-spacing:1px}.signal.wait{color:#f8c974}.signal.avoid{color:#ff6486}.signal.watch{color:#45e4a6}.bar{height:9px;background:#22364b;border-radius:9px;overflow:hidden}.bar>span{display:block;height:100%;background:#00d9ef}.mono{font-family:Consolas,monospace;overflow-wrap:anywhere}@media(max-width:850px){.v8grid{grid-template-columns:1fr}}
+.v11-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:15px 0}
+.v11-meta>div{background:#0b1825;border:1px solid var(--edge);border-radius:10px;padding:13px}
+.v11-meta small{display:block;color:var(--muted);margin-bottom:7px}
+.v11-meta strong{font-size:16px}
+.v11-alerts{display:grid;gap:8px;margin-top:12px}
+.v11-alert{padding:11px 13px;border:1px solid #30506b;border-radius:9px;background:#102335;font-size:13px}
+.v11-alert small{color:var(--muted)}
+.v11-warning{color:#ffca70}
+@media(max-width:650px){.v11-meta{grid-template-columns:1fr}}
+</style></head><body><header><div class="brand">◈ FOMO <span>MATRIX</span> <small style="font-size:12px;color:var(--muted)">AI BOT V11</small></div><div class="tag">● MODO SIMULAÇÃO • RADAR REAL OPCIONAL</div></header><main><h1>Radar de oportunidades</h1><p class="intro">Radar com consulta opcional a dados públicos do DexScreener e triagem de risco V3. As compras e vendas continuam <b>exclusivamente simuladas</b>. Não há conexão com a FOMO Family nem com carteira.</p><div class="stats"><div class="panel stat"><small>Saldo virtual</small><strong id="balance">—</strong></div><div class="panel stat"><small>Resultado realizado</small><strong id="pnl">—</strong></div><div class="panel stat"><small>Posições abertas</small><strong id="positions">—</strong></div><div class="panel stat"><small>Tokens no radar</small><strong id="tokencount">8</strong></div></div><div class="panel" style="margin-bottom:16px"><div class="row" style="flex-wrap:wrap"><div><b>Fonte do radar</b><p class="muted" style="margin:5px 0">Escolha demonstração ou tokens reais em destaque no DexScreener.</p></div><div class="actions" style="margin:0"><button id="demo">Usar demonstração</button><button class="primary" id="live">Buscar tokens reais</button></div></div><p id="sourceStatus" class="muted" role="status">Modo demonstração: todos os dados são fictícios.</p></div><div class="layout"><section class="panel"><h2 class="title">◉ Radar de tokens</h2><div class="toolbar"><select id="chain"><option value="all">Todas as redes</option><option value="SOL">Solana</option><option value="BSC">BNB Chain</option></select><select id="risk"><option value="all">Todos os riscos</option><option value="low">Risco estimado menor</option><option value="high">Risco estimado maior</option></select><select id="order"><option value="score">Maior pontuação</option><option value="volume">Maior volume</option><option value="liquidity">Maior liquidez</option></select></div><div style="overflow:auto"><table><thead><tr><th>Token</th><th>Rede</th><th>Volume 24h</th><th>Liquidez</th><th>Risco</th><th>Score*</th></tr></thead><tbody id="tokens"></tbody></table></div><p class="footer">*Score heurístico de liquidez, volume e variação; não é IA preditiva. O indicador de risco é parcial e NÃO verifica honeypot, contrato, carteiras ou auditoria. Tokens em destaque não são necessariamente novos ou seguros.</p></section><section class="panel"><h2 class="title">▤ Detalhes do token</h2><div class="row"><strong id="coinname">—</strong><span class="pill" id="coinchain">—</span></div><p class="muted" id="coininfo"></p><canvas id="chart" width="700" height="270" aria-label="Gráfico ilustrativo"></canvas><div class="row" style="margin-top:12px"><span>Preço observado</span><strong id="price">—</strong></div><div style="margin-top:10px"><a id="external" target="_blank" rel="noopener noreferrer" style="color:#00d9ef;display:none">Ver par no DexScreener ↗</a></div><div class="row" style="margin-top:10px"><span>Classificação</span><strong id="verdict">—</strong></div><p class="notice">No modo real, o gráfico ilustrativo é desativado. Confirme dados, riscos e contratos em fontes independentes antes de qualquer decisão.</p></section><section class="panel"><h2 class="title">▣ Triagem de segurança V9</h2><p class="muted">Verificações limitadas aos dados de mercado disponíveis. Não é auditoria de contrato.</p><div id="checks" class="history" aria-live="polite"></div><p class="notice">Contrato, honeypot, concentração de holders, mint/freeze authority e bloqueio de liquidez: NÃO VERIFICADOS. Nunca trate um score alto como prova de segurança.</p><div class="actions"><button id="export">Exportar relatório CSV</button></div></section><section class="panel"><h2 class="title">◈ Simulador de operações</h2><div class="settings"><label>Valor por operação (US$ virtual)<input id="amount" type="number" min="1" max="1000" value="50"></label><label>Limite de exposição por operação (%)<input id="limit" type="number" min="1" max="100" value="10"></label></div><div class="actions"><button class="primary" id="buy">Simular compra</button><button id="sell">Simular venda</button><button id="reset">Reiniciar simulação</button></div><p id="feedback" class="muted" role="status"></p><p class="footer">Sem dinheiro real. Taxa simulada de 1% em cada ordem. O preço é ilustrativo no simulador; o radar na nuvem consulta novos instantâneos a cada minuto.</p></section><section class="panel"><h2 class="title">▤ Histórico local</h2><div id="history" class="history"></div><p class="footer">As operações fictícias são guardadas apenas neste navegador (armazenamento local).</p></section></div><section class="panel" style="margin-top:16px"><h2 class="title">◈ V11 • Observatório de preços reais</h2><p class="mini">Salva instantâneos dos tokens do radar real neste navegador. Comparações só aparecem após duas coletas do mesmo contrato. Não é histórico completo de mercado nem monitoramento em segundo plano.</p><div class="actions"><button id="snapshot" disabled>Salvar instantâneo real</button><button id="compare">Comparar coletas</button><button id="exportSnapshots">Exportar histórico CSV</button><button id="clearSnapshots">Limpar histórico</button></div><p id="snapshotStatus" class="muted" role="status">Aguardando primeira consulta real.</p><div style="overflow:auto"><table><thead><tr><th>Token</th><th>Rede</th><th>Preço anterior</th><th>Preço atual</th><th>Variação observada</th><th>Intervalo</th></tr></thead><tbody id="snapshotRows"><tr><td colspan="6" class="muted">Nenhuma comparação disponível.</td></tr></tbody></table></div></section><section class="v8grid" aria-label="Módulos V4 a V8">
 <div class="panel"><h2 class="title">◈ V4 • Motor de sinais explicáveis</h2><p class="mini">Classificação baseada em regras; não prevê preços nem recomenda compra.</p><div id="signal" class="signal wait">AGUARDANDO</div><div id="signalReasons" class="history"></div><div class="settings" style="margin-top:12px"><label>Liquidez mínima (USD)<input type="number" id="minLiquidity" min="0" value="50000"></label><label>Volume mínimo 24h (USD)<input type="number" id="minVolume" min="0" value="25000"></label><label>Risco máximo estimado (%)<input type="number" id="maxRisk" min="0" max="100" value="40"></label><label>Máximo por operação virtual (%)<input type="number" id="maxPosition" min="1" max="100" value="5"></label></div><div class="actions"><button id="evaluate">Reavaliar token</button><button id="exportSignals">Exportar sinais CSV</button></div></div>
 <div class="panel"><h2 class="title">◈ V5 • Laboratório de estratégias</h2><p class="mini">Teste ilustrativo sobre série sintética determinística, não backtest histórico. Custos e drawdown são computados sobre dados fictícios.</p><div class="settings"><label>Stop-loss (%)<input id="stopLoss" type="number" min="0.5" max="90" value="8"></label><label>Take-profit (%)<input id="takeProfit" type="number" min="0.5" max="300" value="16"></label><label>Taxa por lado (%)<input id="feePct" type="number" min="0" max="20" value="1"></label><label>Slippage por lado (%)<input id="slipPct" type="number" min="0" max="20" value="1"></label></div><div class="actions"><button class="primary" id="runLab">Executar experimento</button><button id="exportLab">Exportar resultado</button></div><div id="labResult" class="history" aria-live="polite">Nenhum experimento executado.</div></div>
-<div class="panel"><h2 class="title">◈ V6 • Nuvem e integridade</h2><div class="history"><div>Interface estática: <b class="green">pronta para hospedagem</b></div><div>Hospedagem pública: <b class="risk">não publicada</b></div><div>Consulta externa: <b class="risk">depende de rede e disponibilidade da API</b></div><div>Persistência: <b>local ao navegador</b></div><div>Servidor / autenticação: <b class="risk">não implementados</b></div></div><p class="mini">Arquivos incluídos: instruções de deploy estático e testes locais. Nunca insira chave privada ou frase-semente neste painel.</p></div>
+<div class="panel"><h2 class="title">◈ V11 • Nuvem e integridade</h2><div class="history"><div>Interface estática: <b class="green">pronta para hospedagem</b></div><div>Hospedagem pública: <b class="green">GitHub Pages publicado</b></div><div>Consulta externa: <b class="risk">depende de rede e disponibilidade da API</b></div><div>Persistência: <b>local ao navegador</b></div><div>Servidor / autenticação: <b class="risk">não implementados</b></div></div><p class="mini">Arquivos incluídos: instruções de deploy estático e testes locais. Nunca insira chave privada ou frase-semente neste painel.</p></div>
 <div class="panel"><h2 class="title">◈ V7–V8 • Execução e produto</h2><div class="history"><div>FOMO Family: <b class="risk">sem conexão de conta</b></div><div>Ordens reais: <b class="risk">desativadas</b></div><div>Permissão para bot: <b class="risk">não confirmada</b></div><div>Contas e licenças: <b>arquitetura futura</b></div><div>Auditoria de contratos: <b class="risk">não implementada</b></div></div><p class="notice">Não usar automação de cliques ou execução real sem permissão explícita e integração autorizada. O protótipo não guarda credenciais financeiras.</p></div>
 </section></main><script>
 let tokens=[{id:'NEB',name:'Nebula Pup',chain:'SOL',vol:740000,liq:190000,holders:880,risk:35,seed:4,price:.0042},{id:'BOLT',name:'Bolt Frog',chain:'BSC',vol:450000,liq:130000,holders:560,risk:48,seed:8,price:.0018},{id:'LUMA',name:'Luma Cat',chain:'SOL',vol:950000,liq:420000,holders:2400,risk:19,seed:12,price:.0063},{id:'WAVE',name:'Wave Panda',chain:'BSC',vol:250000,liq:90000,holders:390,risk:63,seed:5,price:.0024},{id:'NOVA',name:'Nova Fox',chain:'SOL',vol:390000,liq:155000,holders:920,risk:27,seed:15,price:.0071},{id:'MOON',name:'Moon Koala',chain:'BSC',vol:840000,liq:250000,holders:1350,risk:41,seed:10,price:.0039},{id:'PIX',name:'Pixel Duck',chain:'SOL',vol:120000,liq:34000,holders:240,risk:81,seed:9,price:.0009},{id:'TIDE',name:'Tide Hamster',chain:'BSC',vol:590000,liq:280000,holders:1100,risk:31,seed:3,price:.0051}];
@@ -52,22 +62,170 @@ el('exportSnapshots').onclick=()=>{const items=readSnapshots();if(!items.length)
 el('clearSnapshots').onclick=()=>{if(confirm('Excluir todos os instantâneos salvos neste navegador?')){localStorage.removeItem(SNAP_KEY);compareSnapshots()}};
 const priorFetchReal=fetchReal;fetchReal=async function(){await priorFetchReal();el('snapshot').disabled=!realMode;if(realMode)el('snapshotStatus').textContent='Consulta concluída. Clique em Salvar instantâneo real para registrar esta coleta.'};
 compareSnapshots();
-</script><section class="panel" style="margin-top:16px"><h2>☁️ V10 — Coletas na nuvem (configuração necessária)</h2><p class="muted">Carrega o último instantâneo gerado pelo coletor agendado no GitHub Actions. Os dados podem estar desatualizados. Tokens promovidos não representam todo o mercado.</p><button id="loadCloud" type="button">Carregar última coleta na nuvem</button><p id="cloudStatus" class="muted" aria-live="polite">Ainda não conectado. Publique este projeto no GitHub Pages e ative o fluxo de coleta.</p></section><script>
-// V10: lê apenas arquivo público gerado pelo coletor; não controla carteiras.
-document.getElementById('loadCloud').addEventListener('click',async()=>{
- const status=document.getElementById('cloudStatus');status.textContent='Carregando coleta...';
- try{
-  const response=await fetch('./data/latest.json?ts='+Date.now(),{cache:'no-store'});
-  if(!response.ok)throw Error('Arquivo indisponível (HTTP '+response.status+')');
-  const payload=await response.json();
-  if(!Array.isArray(payload.tokens)||!payload.tokens.length)throw Error('Nenhum token válido');
-  const age=Date.now()-Date.parse(payload.collected_at);
-  if(!Number.isFinite(age)||age<0||age>90*60*1000)throw Error('Coleta desatualizada; nenhuma substituição efetuada');
-  const clean=payload.tokens.filter(t=>['SOL','BSC'].includes(t.chain)&&typeof t.id==='string'&&t.id.length>5&&Number.isFinite(t.price)&&t.price>0&&Number.isFinite(t.liq)&&Number.isFinite(t.vol)).map(t=>({...t,risk:Math.max(0,Math.min(100,Math.round((t.liq<50000?35:0)+(t.vol<25000?25:0)+(t.liq<t.vol*.1?25:0)+15))),seed:1}));
-  if(!clean.length)throw Error('Dados inválidos');
-  tokens=clean;selected=tokens[0].id;realMode=true;document.getElementById('snapshot').disabled=false;render();
-  status.textContent='Coleta pública: '+new Date(payload.collected_at).toLocaleString('pt-BR')+' • '+clean.length+' tokens. Score é heurístico, não sinal de compra.';
-  document.getElementById('sourceStatus').textContent='Fonte: coleta pública DexScreener, armazenada no repositório. Sem ordens reais.';
- }catch(err){status.textContent='Não foi possível carregar: '+err.message+'. O radar atual foi mantido.';}
-});
+</script><section class="panel" style="margin-top:16px"><h2>☁️ V11 — Radar na nuvem e acompanhamento automático</h2><p class="muted">Carrega o último instantâneo gerado pelo coletor agendado no GitHub Actions. Os dados podem estar desatualizados. Tokens promovidos não representam todo o mercado.</p><button id="loadCloud" type="button">Atualizar coleta agora</button><div class="v11-meta"><div><small>Última coleta</small><strong id="cloudLast">—</strong></div><div><small>Idade dos dados</small><strong id="cloudAge">—</strong></div><div><small>Próxima verificação</small><strong id="cloudNext">—</strong></div></div><h3 class="title">Tokens que atendem aos filtros (não são recomendações)</h3><div id="cloudAlerts" class="v11-alerts" aria-live="polite">Aguardando dados.</div><h3 class="title" style="margin-top:18px">Mudanças entre coletas</h3><div id="cloudChanges" class="history">Aguardando duas coletas diferentes do mesmo token.</div><p id="cloudStatus" class="muted" aria-live="polite">Aguardando a primeira consulta automática à coleta pública.</p></section><script>
+// V11: atualização automática do arquivo público, sem carteira nem ordens reais.
+const CLOUD_INTERVAL_MS = 60 * 1000;
+const CLOUD_HISTORY_KEY = 'fomo_matrix_cloud_history_v11';
+let cloudBusy = false, cloudLastCollected = null, cloudNextCheck = Date.now() + CLOUD_INTERVAL_MS;
+let cloudFingerprint = '';
+const cloudStatus = document.getElementById('cloudStatus');
+const cloudLast = document.getElementById('cloudLast');
+const cloudAge = document.getElementById('cloudAge');
+const cloudNext = document.getElementById('cloudNext');
+const cloudAlerts = document.getElementById('cloudAlerts');
+const cloudChanges = document.getElementById('cloudChanges');
+
+function cloudHistoryRead() {
+  try {
+    const value = JSON.parse(localStorage.getItem(CLOUD_HISTORY_KEY) || '[]');
+    return Array.isArray(value) ? value.slice(-12) : [];
+  } catch { return []; }
+}
+function cloudHistoryWrite(items) {
+  try { localStorage.setItem(CLOUD_HISTORY_KEY, JSON.stringify(items.slice(-12))); }
+  catch { /* O painel continua funcional sem armazenamento local. */ }
+}
+function cloudClock() {
+  if (cloudLastCollected) {
+    const mins = Math.max(0, Math.floor((Date.now() - cloudLastCollected) / 60000));
+    cloudAge.textContent = mins < 1 ? 'menos de 1 min' : mins + ' min';
+  }
+  cloudNext.textContent = Math.max(0, Math.ceil((cloudNextCheck - Date.now()) / 1000)) + ' s';
+}
+function cloudAlertsRender() {
+  cloudAlerts.replaceChildren();
+  if (!realMode || !tokens.length) {
+    cloudAlerts.textContent = 'Nenhuma coleta real carregada.';
+    return;
+  }
+  const minL = Math.max(0, Number(document.getElementById('minLiquidity').value) || 0);
+  const minV = Math.max(0, Number(document.getElementById('minVolume').value) || 0);
+  const maxR = Math.min(100, Math.max(0, Number(document.getElementById('maxRisk').value) || 0));
+  const matches = tokens.filter(t => t.liq >= minL && t.vol >= minV && t.risk <= maxR && t.price > 0);
+  if (!matches.length) {
+    cloudAlerts.textContent = 'Nenhum token atende aos limites atuais. Isso não é uma avaliação de segurança.';
+    return;
+  }
+  for (const t of matches.slice(0, 8)) {
+    const div = document.createElement('div');
+    div.className = 'v11-alert';
+    const title = document.createElement('b');
+    title.textContent = (t.symbol || t.name) + ' · ' + t.chain + ' · score ' + score(t);
+    const sub = document.createElement('small');
+    sub.textContent = 'Liquidez ' + usd(t.liq) + ' · Volume 24h ' + usd(t.vol)
+      + ' · risco parcial ' + t.risk + '% · contrato não auditado';
+    div.append(title, document.createElement('br'), sub);
+    cloudAlerts.append(div);
+  }
+  if (matches.length > 8) {
+    const more = document.createElement('p');
+    more.className = 'muted';
+    more.textContent = '+' + (matches.length - 8) + ' outros tokens atendem aos filtros.';
+    cloudAlerts.append(more);
+  }
+}
+function cloudChangesRender() {
+  const history = cloudHistoryRead();
+  cloudChanges.replaceChildren();
+  if (history.length < 2) {
+    cloudChanges.textContent = 'Aguardando duas coletas diferentes para comparar preços.';
+    return;
+  }
+  const a = history[history.length - 2], b = history[history.length - 1];
+  const previous = new Map(a.tokens.map(t => [t.chain + ':' + t.id, t]));
+  const comparisons = b.tokens.map(t => {
+    const old = previous.get(t.chain + ':' + t.id);
+    return old && old.price > 0 ? {t, pct: (t.price / old.price - 1) * 100} : null;
+  }).filter(Boolean).sort((x, y) => Math.abs(y.pct) - Math.abs(x.pct));
+  if (!comparisons.length) {
+    cloudChanges.textContent = 'As duas últimas coletas não têm contratos em comum.';
+    return;
+  }
+  const heading = document.createElement('div');
+  heading.textContent = 'Comparação entre ' + new Date(a.at).toLocaleString('pt-BR')
+    + ' e ' + new Date(b.at).toLocaleString('pt-BR') + ':';
+  cloudChanges.append(heading);
+  for (const x of comparisons.slice(0, 12)) {
+    const line = document.createElement('div');
+    line.textContent = (x.t.symbol || x.t.name) + ' (' + x.t.chain + '): '
+      + (x.pct >= 0 ? '+' : '') + x.pct.toFixed(2) + '%';
+    line.className = x.pct >= 0 ? 'green' : 'red';
+    cloudChanges.append(line);
+  }
+}
+async function loadCloudV11(manual = false) {
+  if (cloudBusy) return;
+  cloudBusy = true;
+  const button = document.getElementById('loadCloud');
+  button.disabled = true;
+  if (manual || !cloudLastCollected) cloudStatus.textContent = 'Consultando última coleta pública...';
+  try {
+    const response = await fetch('./data/latest.json?ts=' + Date.now(), {cache:'no-store'});
+    if (!response.ok) throw Error('HTTP ' + response.status);
+    const payload = await response.json();
+    if (!Array.isArray(payload.tokens) || !payload.tokens.length) throw Error('Lista de tokens vazia');
+    const at = Date.parse(payload.collected_at);
+    const age = Date.now() - at;
+    if (!Number.isFinite(at) || age < -5*60000) throw Error('Horário de coleta inválido');
+    if (age > 90*60000) throw Error('Coleta com mais de 90 minutos; radar anterior preservado');
+    const clean = payload.tokens.filter(t =>
+      ['SOL','BSC'].includes(t.chain) && typeof t.id === 'string' && t.id.length > 5
+      && Number.isFinite(t.price) && t.price > 0
+      && Number.isFinite(t.liq) && t.liq >= 0
+      && Number.isFinite(t.vol) && t.vol >= 0
+    ).map(t => ({
+      ...t, seed:1,
+      risk:Math.max(0, Math.min(100, Math.round(
+        (t.liq < 50000 ? 35 : 0) + (t.vol < 25000 ? 25 : 0)
+        + (t.liq < t.vol*.1 ? 25 : 0) + 15
+      )))
+    }));
+    if (!clean.length) throw Error('Nenhum token válido');
+    const fingerprint = String(payload.collected_at);
+    if (fingerprint !== cloudFingerprint) {
+      const history = cloudHistoryRead();
+      if (!history.some(h => h.at === fingerprint)) {
+        history.push({at:fingerprint, tokens:clean.map(t => ({
+          id:t.id, chain:t.chain, name:t.name, symbol:t.symbol, price:t.price
+        }))});
+        cloudHistoryWrite(history);
+      }
+      cloudFingerprint = fingerprint;
+    }
+    const keepSelected = clean.some(t => t.id === selected);
+    tokens = clean;
+    if (!keepSelected) selected = clean[0].id;
+    realMode = true;
+    document.getElementById('buy').disabled = true;
+    document.getElementById('sell').disabled = true;
+    document.getElementById('snapshot').disabled = false;
+    cloudLastCollected = at;
+    cloudLast.textContent = new Date(at).toLocaleString('pt-BR');
+    document.getElementById('sourceStatus').textContent =
+      'Fonte: última coleta pública do DexScreener via GitHub Actions. Sem ordens reais.';
+    render();
+    cloudAlertsRender();
+    cloudChangesRender();
+    cloudStatus.textContent = 'Coleta carregada: ' + clean.length +
+      ' tokens. Verificação automática a cada 1 minuto. Risco e score são heurísticos.';
+  } catch (error) {
+    cloudStatus.textContent = 'Não foi possível atualizar: ' + error.message
+      + '. Dados anteriores mantidos, se disponíveis.';
+  } finally {
+    cloudBusy = false;
+    button.disabled = false;
+    cloudNextCheck = Date.now() + CLOUD_INTERVAL_MS;
+    cloudClock();
+  }
+}
+document.getElementById('loadCloud').addEventListener('click', () => loadCloudV11(true));
+for (const id of ['minLiquidity','minVolume','maxRisk']) {
+  document.getElementById(id).addEventListener('input', cloudAlertsRender);
+}
+setInterval(() => {
+  cloudClock();
+  if (Date.now() >= cloudNextCheck) loadCloudV11(false);
+}, 1000);
+cloudChangesRender();
+loadCloudV11(false);
 </script></body></html>
